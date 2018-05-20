@@ -4,11 +4,11 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class CheckoutTest extends FlatSpec with Matchers {
   it should "calculate total price without discount" in {
-    val skus = "ABCD"
+    val skus = "ABCDE"
 
     val result = Checkout.checkout(skus)
 
-    result shouldBe 115
+    result shouldBe 155
   }
 
   it should "calculate total price with discount" in {

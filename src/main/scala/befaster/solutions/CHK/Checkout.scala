@@ -9,11 +9,13 @@ object Checkout {
     SKU("A", 50),
     SKU("B", 30),
     SKU("C", 20),
-    SKU("D", 15)
+    SKU("D", 15),
+    SKU("E", 40)
   )
 
   private val discounts = List(
     Discount("A", 3, 130),
+    Discount("A", 5, 200),
     Discount("B", 2, 45)
   )
 

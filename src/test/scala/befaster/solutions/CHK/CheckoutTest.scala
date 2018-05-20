@@ -19,11 +19,14 @@ class CheckoutTest extends FlatSpec with Matchers {
     result shouldBe 210
   }
 
+  it should "return 0 in case of no items" in {
+    Checkout.checkout("") shouldBe 0
+  }
+
   it should "return -1 in case of illegal input" in {
     Checkout.checkout("ABCX") shouldBe -1
     Checkout.checkout("abcd") shouldBe -1
     Checkout.checkout("invalid") shouldBe -1
     Checkout.checkout(" ") shouldBe -1
-    Checkout.checkout("") shouldBe -1
   }
 }

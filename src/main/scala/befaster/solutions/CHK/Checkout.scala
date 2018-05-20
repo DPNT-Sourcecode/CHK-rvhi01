@@ -20,6 +20,13 @@ object Checkout {
   def checkout(skus: String): Integer = {
     val items = skus.split(",").toList
 
+    items.distinct.diff(prices.map(_.item)) match {
+      case _ => -1
+      case Nil => calculateTotalPrice(items)
+    }
+  }
+
+  private def calculateTotalPrice(items: List[String]): Int = {
     val groupedSkus = items.flatMap(i => prices.filter(p => p.item == i)).groupBy(_.item)
 
     val receipt = groupedSkus.map { sku =>

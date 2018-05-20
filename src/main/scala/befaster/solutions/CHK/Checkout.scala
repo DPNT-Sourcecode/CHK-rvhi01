@@ -22,8 +22,8 @@ object Checkout {
 
     val groupedSkus = items.flatMap(i => prices.filter(p => p.item == i)).groupBy(_.item)
 
-    val temp = groupedSkus.map { sku =>
-      val discount = discounts.find(d => d.item == sku._1) match {
+    val receipt = groupedSkus.map { sku =>
+      discounts.find(d => d.item == sku._1) match {
         case Some(d) =>
           val discountCount = sku._2.length / d.quantity
           val remainderCount = sku._2.length % d.quantity
@@ -31,10 +31,8 @@ object Checkout {
           discountCount * d.price + remainderCount * sku._2.head.price
         case None => sku._2.map(_.price).sum
       }
-
-      discount
     }
 
-    temp.sum
+    receipt.sum
   }
 }

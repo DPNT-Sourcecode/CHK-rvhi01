@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class CheckoutTest extends FlatSpec with Matchers {
   it should "calculate total price without discount" in {
-    val skus = "A,B,C,D"
+    val skus = "ABCD"
 
     val result = Checkout.checkout(skus)
 
@@ -12,7 +12,7 @@ class CheckoutTest extends FlatSpec with Matchers {
   }
 
   it should "calculate total price with discount" in {
-    val skus = "A,B,C,A,D,B,A"
+    val skus = "ABCADBA"
 
     val result = Checkout.checkout(skus)
 
@@ -20,8 +20,8 @@ class CheckoutTest extends FlatSpec with Matchers {
   }
 
   it should "return -1 in case of illegal input" in {
-    Checkout.checkout("A,B,C,X") shouldBe -1
-    Checkout.checkout("A B C D") shouldBe -1
+    Checkout.checkout("ABCX") shouldBe -1
+    Checkout.checkout("abcd") shouldBe -1
     Checkout.checkout("invalid") shouldBe -1
     Checkout.checkout(" ") shouldBe -1
     Checkout.checkout("") shouldBe -1

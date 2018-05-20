@@ -18,7 +18,7 @@ object Checkout {
   )
 
   def checkout(skus: String): Integer = {
-    val items = skus.split(",").toList
+    val items = skus.toCharArray.map(_.toString).toList
 
     items.distinct.diff(prices.map(_.item)) match {
       case Nil => calculateTotalPrice(items)

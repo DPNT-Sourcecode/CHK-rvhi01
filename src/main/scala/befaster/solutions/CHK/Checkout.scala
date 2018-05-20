@@ -1,9 +1,5 @@
 package befaster.solutions.CHK
 
-case class SKU(item: String, price: Int)
-
-case class Discount(item: String, quantity: Int, price: Int)
-
 object Checkout {
   private val prices = List(
     SKU("A", 50),
@@ -11,12 +7,6 @@ object Checkout {
     SKU("C", 20),
     SKU("D", 15),
     SKU("E", 40)
-  )
-
-  private val discounts = List(
-    Discount("A", 3, 130),
-    Discount("A", 5, 200),
-    Discount("B", 2, 45)
   )
 
   def checkout(skus: String): Integer = {

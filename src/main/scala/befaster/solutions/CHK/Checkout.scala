@@ -21,8 +21,8 @@ object Checkout {
     val items = skus.split(",").toList
 
     items.distinct.diff(prices.map(_.item)) match {
-      case _ => -1
       case Nil => calculateTotalPrice(items)
+      case _ => -1
     }
   }
 

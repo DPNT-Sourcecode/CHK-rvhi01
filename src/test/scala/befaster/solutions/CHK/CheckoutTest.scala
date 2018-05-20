@@ -20,10 +20,10 @@ class CheckoutTest extends FlatSpec with Matchers {
   }
 
   it should "return -1 in case of illegal input" in {
-    val skus = "A,B,C,X"
-
-    val result = Checkout.checkout(skus)
-
-    result shouldBe -1
+    Checkout.checkout("A,B,C,X") shouldBe -1
+    Checkout.checkout("A B C D") shouldBe -1
+    Checkout.checkout("invalid") shouldBe -1
+    Checkout.checkout(" ") shouldBe -1
+    Checkout.checkout("") shouldBe -1
   }
 }
